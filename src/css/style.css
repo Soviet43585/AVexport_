@@ -427,6 +427,14 @@ body {
 .header .container {
   overflow: auto;
 }
+.header__logo-container {
+  display: flex;
+  align-items: center;
+}
+.header__company-name {
+  color: #131313;
+  font-size: 25px;
+}
 .header__logo {
   display: block;
 }
@@ -1057,6 +1065,9 @@ body {
     position: sticky;
     top: 0;
     z-index: 5;
+  }
+  .header__company-name {
+    display: none;
   }
   .header__nav {
     margin: 0 auto;

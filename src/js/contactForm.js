@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
             formData.forEach(function(value, key){
                 object[key] = value;
             });
-            request.open("POST", "http://localhost:8080/api/contacts/post");
+            request.open("POST", "http://178.172.235.232/api/contacts/post");
             request.setRequestHeader("Content-type", "application/json");
             request.send(JSON.stringify(object));
         });

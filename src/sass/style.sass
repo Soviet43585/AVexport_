@@ -47,6 +47,12 @@ body
     z-index: 5
     .container
         overflow: auto
+    &__logo-container
+        display: flex
+        align-items: center
+    &__company-name
+        color: #131313
+        font-size: 25px
     &__logo
         display: block
     &__container
@@ -553,6 +559,8 @@ body
         position: sticky
         top: 0
         z-index: 5
+        &__company-name
+            display: none
         &__nav
             margin: 0 auto
             width: 100%
