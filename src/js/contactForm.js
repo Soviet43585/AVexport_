@@ -1,29 +1,30 @@
-window.addEventListener("DOMContentLoaded", () => {
+$(document).ready(function() {
+    $("#contact-form").submit(function(e) {
+        e.preventDefault();
 
-    const form = document.querySelector(".modal__form");
+        let formData = $(this).serialize();
 
-    console.log(form);
+        var email = $("#email").val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    sendContact(form);
+        if (!emailPattern.test(email)) {
+            alert("Пожалуйста, введите корректный email-адрес.");
+            return;
+        }
 
-    function sendContact(form) {
-        
-
-              
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            let object = {};
-            const formData = new FormData(form),
-                  request = new XMLHttpRequest();
-            formData.forEach(function(value, key){
-                object[key] = value;
-            });
-            request.open("POST", "http://178.172.235.232/api/contacts/post");
-            request.setRequestHeader("Content-type", "application/json");
-            request.send(JSON.stringify(object));
+        $.ajax({
+            type: "POST",
+            url: "php/send.php",
+            data: formData,
+            success: function(response) {
+                $(".modal").addClass("hide");
+                alert("Контакты успешно отправлены!");
+            },
+            error: function(response) {
+                $(".modal").addClass("hide");
+                alert("Произошла ошибка при отправке данных.");
+                console.log(response);
+            }
         });
-
-    }
-
-
+    });
 });
