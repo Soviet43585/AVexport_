@@ -3,28 +3,29 @@ window.addEventListener("DOMContentLoaded", () => {
     const dynamicSection = document.querySelector(".dynamic-section"),
           navListWrapper = document.querySelector(".header__nav"),
           hamburger = document.querySelector(".header__hamburger"),
-          arrow = document.querySelectorAll(".arrow"),
           slides = document.querySelectorAll(".slide"),
+          arrowBox = document.querySelector(".arrow-box"),
           prev = document.querySelectorAll(".left-arrow"),
           next = document.querySelectorAll(".right-arrow"),
           slideWrapper = document.querySelector(".slide-wrapper"),
           slidesField = document.querySelector(".slide-inner"),
           tabs = document.querySelectorAll(".header__nav-item"),
           orderBtn = document.querySelectorAll(".contacts-button"),
-          chatBtn = document.querySelectorAll(".chat-button"),
           modal = document.querySelector(".modal"),
           feedbackBtn = document.querySelectorAll(".feedback"),
-          closeModalBtn = document.querySelectorAll("[data-close]"),
-          body = document.querySelector("body");
+          viberLinks = document.querySelectorAll(".viber");
+          closeModalBtn = document.querySelectorAll("[data-close]");
           
     let offset = 0,
         width = window.getComputedStyle(slideWrapper).width,
         slideIndex = 0;
 
     dynamicSection.style.height = window.innerHeight - document.querySelector(".header").offsetHeight + "px";
+    arrowBox.style.height = slideWrapper.offsetHeight + "px";
     sliderInit();
     hamburgerInit();
     btnInit();
+    linksInit();
     function hamburgerInit() {
         hamburger.addEventListener("click", () => {
             if(hamburger.classList.contains("header__hamburger_active")) {
@@ -36,6 +37,14 @@ window.addEventListener("DOMContentLoaded", () => {
                 navListWrapper.style.height = "auto";
             }
         });
+    }
+
+    function linksInit() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            viberLinks.forEach(item => {
+                item.href = "viber://phone?number=+375296546002";
+            });
+        } 
     }
 
     function btnInit() {
