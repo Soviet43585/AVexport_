@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
     sliderInit();
     hamburgerInit();
     btnInit();
-    linksInit();
+    //linksInit();
     function hamburgerInit() {
         hamburger.addEventListener("click", () => {
             if(hamburger.classList.contains("header__hamburger_active")) {
